@@ -1,9 +1,10 @@
 public class Rocket implements SpaceShip {
-int rocketCost;
-int rocketWeight;
-int rocketMaxWeight;
-double launchExplosionChance;
-double landingCrashChance;
+    int rocketCost;
+    int rocketWeight;
+    int rocketMaxWeightWithCargo;
+    int rocketCurrentWeight = rocketWeight;
+    double launchExplosionChance;
+    double landingCrashChance;
 
 
     @Override
@@ -18,11 +19,21 @@ double landingCrashChance;
 
     @Override
     public boolean canCarry(Item item) {
-        return false;
+        //zwraca true/false zaleznie od wyniku wyrazenia
+        //wywoluje metode carry, ktora aktualizuje wage statku jesli przedmiot sie zmiescil
+        if (item.getWeight() <= (rocketMaxWeightWithCargo - rocketCurrentWeight)) {
+            carry(item);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     @Override
+    //dlaczego nie moze byc void?
     public int carry(Item item) {
-        return 0;
+        rocketCurrentWeight = rocketCurrentWeight + item.getWeight();
+        return rocketCurrentWeight;
     }
 }

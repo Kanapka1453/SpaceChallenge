@@ -1,6 +1,6 @@
 public class Item {
-    String name;
-    int weight;
+    private String name;
+    private int weight;
 
 
     public void setName(String name) {
@@ -20,8 +20,7 @@ public class Item {
     }
 
 
-
-    public Item (String itemName, int itemWeight){
+    public Item(String itemName, int itemWeight) {
         setName(itemName);
         setWeight(itemWeight);
 

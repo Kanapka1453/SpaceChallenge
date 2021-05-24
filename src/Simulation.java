@@ -27,9 +27,14 @@ public class Simulation {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println("test");
-        System.out.println(itemArrayList.get(0).getName() + itemArrayList.get(0).getWeight());
         return itemArrayList;
+    }
+
+    public ArrayList<U1> loadU1(ArrayList<Item> itemsToTakeArrayList) {
+        ArrayList<U1> u1ArrayList = new ArrayList<>();
+
+
+        return u1ArrayList;
     }
 
 }
