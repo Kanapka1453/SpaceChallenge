@@ -37,7 +37,6 @@ public class Simulation {
         int payloadWeightLeft;
         //wylicza wage wszystkich przedmiotow do zaladowania
         payloadWeightLeft = sumPayloadWeight(itemsToTakeArrayList);
-        System.out.println("Total weight:" + payloadWeightLeft);
         u1ArrayList.add(0, new U1());
         //gdy aktualna waga danej rakiety U1 jest <= maksymalnemu udzwigowi i waga pozostałych do załadowania przedmiotów !=0
         int i = 0; // while loop rocket counter
@@ -47,14 +46,15 @@ public class Simulation {
                 u1ArrayList.get(i).rocketCurrentWeight += itemsToTakeArrayList.get(j).getWeight();
                 payloadWeightLeft = payloadWeightLeft - itemsToTakeArrayList.get(j).getWeight();
                 j++;
-                System.out.println("DEBUG:waga rakiety " + i + " wynosi " + u1ArrayList.get(i).rocketCurrentWeight);
+                //System.out.println("DEBUG:waga rakiety " + i + " wynosi " + u1ArrayList.get(i).rocketCurrentWeight);
             } else {
+                u1ArrayList.get(i).land();
                 u1ArrayList.add(new U1());
                 i++;
-                System.out.println("DEBUG:stworzono rakietę: " + i);
+                //System.out.println("DEBUG:stworzono rakietę: " + i);
             }
-            System.out.println("DEBUG:payload left: " + payloadWeightLeft);
-            System.out.println("DEBUG:załadowana została rakieta: " + i);
+            //System.out.println("DEBUG:payload left: " + payloadWeightLeft);
+            //System.out.println("DEBUG:załadowana została rakieta: " + i);
         }
 
         return u1ArrayList;
