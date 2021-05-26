@@ -2,10 +2,9 @@ public class Rocket implements SpaceShip {
     int rocketCost;
     int rocketWeight;
     int rocketMaxWeightWithCargo;
-    int rocketCurrentWeight = rocketWeight;
+    int rocketCurrentWeight;
     double launchExplosionChance;
     double landingCrashChance;
-
 
     @Override
     public boolean launch() {
