@@ -7,6 +7,10 @@ public class Simulation {
 
     int entirePayloadWeight;
     ArrayList<Item> itemArrayList = new ArrayList<>();
+    ArrayList<Rocket> u1ArrayList = new ArrayList<>();
+    ArrayList<Rocket> u2ArrayList = new ArrayList<>();
+
+
 
     public ArrayList<Item> loadItems() {
         File phaseOneItems = new File("phase-1.txt");
@@ -24,7 +28,7 @@ public class Simulation {
                 //nameWeightSeparator + 1 po to, aby uciac tez znak "=" z wagi przedmiotu
                 itemWeight = Integer.parseInt(itemDesc.substring(nameWeightSeparator + 1));
                 itemArrayList.add(new Item(itemName, itemWeight));
-                System.out.println(itemName + "+" + itemWeight);
+                //System.out.println("DEBUG: "itemName + "+" + itemWeight);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -32,8 +36,7 @@ public class Simulation {
         return itemArrayList;
     }
 
-    public ArrayList<U1> loadU1(ArrayList<Item> itemsToTakeArrayList) {
-        ArrayList<U1> u1ArrayList = new ArrayList<>();
+    public ArrayList<Rocket> loadU1(ArrayList<Item> itemsToTakeArrayList) {
         int payloadWeightLeft;
         //wylicza wage wszystkich przedmiotow do zaladowania
         payloadWeightLeft = sumPayloadWeight(itemsToTakeArrayList);
@@ -51,7 +54,7 @@ public class Simulation {
                 u1ArrayList.get(i).land();
                 u1ArrayList.add(new U1());
                 i++;
-                //System.out.println("DEBUG:stworzono rakietę: " + i);
+                System.out.println("DEBUG:stworzono rakietę: " + (i+1));
             }
             //System.out.println("DEBUG:payload left: " + payloadWeightLeft);
             //System.out.println("DEBUG:załadowana została rakieta: " + i);
@@ -60,8 +63,7 @@ public class Simulation {
         return u1ArrayList;
     }
 
-    public ArrayList<U2> loadU2(ArrayList<Item> itemsToTakeArrayList) {
-        ArrayList<U2> u2ArrayList = new ArrayList<>();
+    public ArrayList<Rocket> loadU2(ArrayList<Item> itemsToTakeArrayList) {
         int payloadWeightLeft;
         //wylicza wage wszystkich przedmiotow do zaladowania
         payloadWeightLeft = sumPayloadWeight(itemsToTakeArrayList);
@@ -98,6 +100,19 @@ public class Simulation {
             entirePayloadWeight += item.getWeight();
         }
         return entirePayloadWeight;
+    }
+    public int runSimulation(ArrayList <Rocket> rocketArrayList){
+        int i=0;
+        for(Rocket rocket : rocketArrayList){
+            rocket.launch();
+            rocket.land();
+            i++;
+            System.out.println("petla i: "+i);
+            //to do: tracking kosztow, sprawdzanie czy rakieta sie rozbila
+
+        }
+
+        return 0;
     }
 
 
