@@ -1,11 +1,12 @@
 public class U1 extends Rocket {
-    int currentPayloadWeightU1 = rocketCurrentWeight - rocketWeight;
+    int currentPayloadWeightU1;
 
     @Override
     // dlaczego tutaj nie moze byc np private, sprawdzic czy mozna zredukowac widocznosc przy override
     public boolean launch() {
         //cast do double niezbedny zeby nie ucielo wartosci po przecinku
-        double crashLaunchChanceU1 = 5 * ((double) currentPayloadWeightU1 / rocketCargoLimit);
+        currentPayloadWeightU1=rocketCurrentWeight - rocketWeight;
+        double crashLaunchChanceU1 = 50 * ((double) currentPayloadWeightU1 / rocketCargoLimit);
         /*
         if (Math.random()*100 < crashChanceU1) {
             return false;
@@ -15,6 +16,8 @@ public class U1 extends Rocket {
         */
 
         //simplified version
+        //System.out.println((double) currentPayloadWeightU1+"/"+(double) rocketCargoLimit);
+        //System.out.println(Math.random() * 100+"<"+crashLaunchChanceU1);
         return !(Math.random() * 100 < crashLaunchChanceU1);
     }
 
