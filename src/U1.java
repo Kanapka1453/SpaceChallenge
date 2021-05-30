@@ -4,9 +4,9 @@ public class U1 extends Rocket {
     @Override
     // dlaczego tutaj nie moze byc np private, sprawdzic czy mozna zredukowac widocznosc przy override
     public boolean launch() {
-        //cast do double niezbedny zeby nie ucielo wartosci po przecinku
-        currentPayloadWeightU1=rocketCurrentWeight - rocketWeight;
-        double crashLaunchChanceU1 = 50 * ((double) currentPayloadWeightU1 / rocketCargoLimit);
+        //TO DO: SPROBOWAC OBLICZAC TO POZA METODA
+        currentPayloadWeightU1 = rocketCurrentWeight - rocketWeight;
+        double crashLaunchChanceU1 = 5 * ((double) currentPayloadWeightU1 / rocketCargoLimit);
         /*
         if (Math.random()*100 < crashChanceU1) {
             return false;
@@ -23,6 +23,7 @@ public class U1 extends Rocket {
 
     @Override
     public boolean land() {
+        currentPayloadWeightU1 = rocketCurrentWeight - rocketWeight;
         double crashLandingChanceU1 = 1 * ((double) currentPayloadWeightU1 / rocketCargoLimit);
         return !(Math.random() * 100 < crashLandingChanceU1);
     }
